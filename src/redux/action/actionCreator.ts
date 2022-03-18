@@ -13,12 +13,33 @@ export function saveTextToStore(dispatch: (object: rootAction)=> void, value: st
 }
 
 export function validatorType(dispatch: (obj: rootAction)=> void, checkText: string) {
+
     if (validator.isEmail(checkText)) {
         saveTypeStatus(dispatch, 'email')
+    } else {
+        if (validator.isMobilePhone(checkText)) {
+            saveTypeStatus(dispatch, 'phone')
+        }
+        else {
+            if (validator.isIP(checkText, 4)) {
+                saveTypeStatus(dispatch, 'ip')
+            }
+            else {
+                if (checkText[0] === '@') {
+                    saveTypeStatus(dispatch, 'nick')
+                }
+                else {
+                    saveTypeStatus(dispatch, 'error')
+                }
+            }
+        }
     }
-    if (validator.isMobilePhone(checkText)) {
-        saveTypeStatus(dispatch, 'phone')
-    }
+
+
+
+
+
+
 
 }
 
