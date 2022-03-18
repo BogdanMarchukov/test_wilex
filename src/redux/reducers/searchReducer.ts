@@ -1,10 +1,10 @@
 
 interface initState {
-    test: string
+    inputValue: string | null
 }
 
 const initState: initState = {
-    test: 'test'
+    inputValue: null
 }
 
 
