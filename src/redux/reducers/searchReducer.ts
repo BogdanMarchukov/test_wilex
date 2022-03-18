@@ -1,11 +1,13 @@
-import {rootAction, SAVE_INPUT_TEXT} from "../action/type";
+import {rootAction, SAVE_INPUT_TEXT, SAVE_TYPE_STATUS} from "../action/type";
 
 interface initState {
     inputValue: string | null
+    searchType: string | null
 }
 
 const initState: initState = {
-    inputValue: null
+    inputValue: null,
+    searchType: null
 }
 
 
@@ -15,6 +17,11 @@ export const searchReducer = (state = initState, action: rootAction): initState 
             return {
                 ...state,
                 inputValue: action.payload
+            }
+        case SAVE_TYPE_STATUS :
+            return {
+                ...state,
+                searchType: action.payload
             }
         default :
             return state
