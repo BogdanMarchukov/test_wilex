@@ -3,8 +3,10 @@ import * as React from 'react'
 import {useState} from 'react'
 import classes from './input.module.css'
 import {Button} from '@material-ui/core'
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {saveTextToStore} from "../../redux/action/actionCreator";
+import {Link} from "react-router-dom";
+import {rootState} from "../../redux/action/type";
 
 type Props = {
     
@@ -15,14 +17,27 @@ export const Input = (props: Props) => {
 
     const dispatch = useDispatch()
 
+    const selector = (state: any) => {
+        return {
+            searchType: state.searchReducer.searchType
+        }
+    }
+
+    const {searchType} = useSelector(selector)
+
+
 
 
     return (
         <div className={classes.inputWrapper}>
             <input className={classes.input} onChange={(event)=> saveTextToStore(dispatch, event.target.value) }/>
+            <Link to={searchType}>
             <Button variant="contained" color="primary">
-                search
+
+                    search
+
             </Button>
+            </Link>
         </div>
     );
 };

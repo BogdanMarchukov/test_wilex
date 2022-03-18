@@ -1,13 +1,13 @@
 import {rootAction, SAVE_INPUT_TEXT, SAVE_TYPE_STATUS} from "../action/type";
 
-interface initState {
+export interface initState {
     inputValue: string | null
-    searchType: string | null
+    searchType: string
 }
 
 const initState: initState = {
     inputValue: null,
-    searchType: null
+    searchType: '/'
 }
 
 
