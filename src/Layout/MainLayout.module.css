@@ -1,0 +1,8 @@
+.layout {
+    width: 1000px;
+    height: 500px;
+    border: solid red;
+    position: absolute;
+    left: calc(50% - 500px);
+    top: 200px;
+}
