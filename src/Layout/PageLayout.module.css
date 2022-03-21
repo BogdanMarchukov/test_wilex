@@ -1,0 +1,7 @@
+.pageLayout {
+    position: absolute;
+    width: 80%;
+    height: 100vh;
+    border: solid red;
+    left: 10%;
+}
