@@ -3,6 +3,7 @@ import * as React from 'react';
 import {Box, Card} from "@material-ui/core";
 import classes from './uaerCard.module.css'
 import {useSelector} from "react-redux";
+import {ToHome} from "../ToHome/ToHome";
 
 type Props = {};
 export const UserCard = (props: Props) => {
@@ -21,29 +22,29 @@ export const UserCard = (props: Props) => {
 
 
     return (
-        <Box
-            sx={{
-                width: '350px'
-            }}
+        <div
+            className={classes.wrapper}
         >
+            <ToHome left={50} top={100}/>
             <Card>
+                <h3>User Data:</h3>
                 <div className={classes.block}>
-                    <span>User Email</span>
-                    <span>-{email}</span>
+                    <span>User Email :</span>
+                    <span>{email}</span>
                 </div>
                 <div className={classes.block}>
-                    <span>User Nick</span>
-                    <span>-{nick}</span>
+                    <span>User Nick :</span>
+                    <span>{nick}</span>
                 </div>
                 <div className={classes.block}>
-                    <span>User Phone</span>
-                    <span>-{phone}</span>
+                    <span>User Phone :</span>
+                    <span>{phone}</span>
                 </div>
                 <div className={classes.block}>
-                    <span>User IP</span>
-                    <span>-{ip}</span>
+                    <span>User IP :</span>
+                    <span>{ip}</span>
                 </div>
             </Card>
-        </Box>
+        </div>
     );
 };

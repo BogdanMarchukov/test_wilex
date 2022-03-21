@@ -4,7 +4,7 @@ import {useState} from 'react'
 import classes from './input.module.css'
 import {Button} from '@material-ui/core'
 import {useDispatch, useSelector} from "react-redux";
-import {saveTextToStore} from "../../redux/action/actionCreator";
+import {addUserData, saveTextToStore} from "../../redux/action/actionCreator";
 import {Link} from "react-router-dom";
 import {rootState} from "../../redux/action/type";
 
@@ -19,11 +19,13 @@ export const Input = (props: Props) => {
 
     const selector = (state: any) => {
         return {
-            searchType: state.searchReducer.searchType
+            searchType: state.searchReducer.searchType,
+            inputValue: state.searchReducer.inputValue
         }
     }
 
-    const {searchType} = useSelector(selector)
+    const {searchType, inputValue} = useSelector(selector)
+
 
 
 
@@ -32,7 +34,11 @@ export const Input = (props: Props) => {
         <div className={classes.inputWrapper}>
             <input className={classes.input} onChange={(event)=> saveTextToStore(dispatch, event.target.value) }/>
             <Link to={searchType}>
-            <Button variant="contained" color="primary">
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={()=> addUserData(dispatch, inputValue, searchType)}
+            >
 
                     search
 

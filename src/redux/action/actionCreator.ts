@@ -1,4 +1,12 @@
-import {rootAction, SAVE_INPUT_TEXT, SAVE_TYPE_STATUS} from './type'
+import {
+    ADD_USER_EMAIL,
+    rootAction,
+    SAVE_INPUT_TEXT,
+    SAVE_TYPE_STATUS,
+    ADD_USER_IP,
+    ADD_USER_NICK,
+    ADD_USER_PHONE
+} from './type'
 import validator from 'validator';
 
 export interface saveTextAction {
@@ -35,12 +43,6 @@ export function validatorType(dispatch: (obj: rootAction)=> void, checkText: str
         }
     }
 
-
-
-
-
-
-
 }
 
 export interface saveTypeStatusAction {
@@ -50,4 +52,25 @@ export interface saveTypeStatusAction {
 
 export function saveTypeStatus(dispatch: (obj: rootAction)=> void, payload: string) {
     dispatch({type: SAVE_TYPE_STATUS, payload})
+}
+
+export interface addUserDataAction {
+    type: typeof ADD_USER_EMAIL | typeof ADD_USER_PHONE | typeof ADD_USER_IP | typeof ADD_USER_NICK
+    payload: string
+}
+
+
+export function addUserData(dispatch: (obj: rootAction)=> void, userData: string, dataType: string){
+    if (dataType === 'email') {
+        dispatch({type: ADD_USER_EMAIL, payload: userData})
+    }
+    if (dataType === 'phone') {
+        dispatch({type: ADD_USER_PHONE, payload: userData})
+    }
+    if (dataType === 'ip') {
+        dispatch({type: ADD_USER_IP, payload: userData})
+    }
+    if (dataType === 'nick') {
+        dispatch({type: ADD_USER_NICK, payload: userData})
+    }
 }
