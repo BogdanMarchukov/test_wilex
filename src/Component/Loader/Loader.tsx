@@ -20,7 +20,7 @@ export const Loader = (props: Props) => {
     const text = () => {
         if (searchType === '/') {
             return null
-        } else return searchType
+        } else return <div className={classes.textWrapper} ><span>{searchType}</span></div>
     }
 
 
