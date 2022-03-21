@@ -18,7 +18,7 @@ export const Loader = (props: Props) => {
     const {loader, searchType} = useSelector(selector)
 
     const text = () => {
-        if (searchType === '/') {
+        if (searchType === '/' || searchType === '') {
             return null
         } else return <div className={classes.textWrapper} ><span>{searchType}</span></div>
     }

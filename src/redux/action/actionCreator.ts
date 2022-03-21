@@ -18,8 +18,11 @@ export interface saveTextAction {
 
 export function saveTextToStore(dispatch: (object: rootAction)=> void, value: string) {
     validatorType(dispatch, value)
-    loading(dispatch, true)
     dispatch({type: SAVE_INPUT_TEXT, payload: value})
+    setTimeout(()=> {
+        loading(dispatch, true)
+    }, 200)
+
 }
 
 export function validatorType(dispatch: (obj: rootAction)=> void, checkText: string) {
@@ -37,10 +40,15 @@ export function validatorType(dispatch: (obj: rootAction)=> void, checkText: str
             else {
                 if (checkText[0] === '@') {
                     saveTypeStatus(dispatch, 'nick')
+                } else {
+                    if (checkText === '') {
+                        saveTypeStatus(dispatch, '/')
+                    }
+                    else {
+                        saveTypeStatus(dispatch, 'error')
+                    }
                 }
-                else {
-                    saveTypeStatus(dispatch, 'error')
-                }
+
             }
         }
     }
