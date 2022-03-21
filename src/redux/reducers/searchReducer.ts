@@ -1,13 +1,15 @@
-import {rootAction, SAVE_INPUT_TEXT, SAVE_TYPE_STATUS} from "../action/type";
+import {LOADER_ON_OFF, rootAction, SAVE_INPUT_TEXT, SAVE_TYPE_STATUS} from "../action/type";
 
 export interface initState {
     inputValue: string | null
     searchType: string
+    loader: boolean
 }
 
 const initState: initState = {
     inputValue: null,
-    searchType: '/'
+    searchType: '/',
+    loader: false
 }
 
 
@@ -22,6 +24,11 @@ export const searchReducer = (state = initState, action: rootAction): initState 
             return {
                 ...state,
                 searchType: action.payload
+            }
+        case LOADER_ON_OFF :
+            return {
+                ...state,
+                loader: action.payload
             }
         default :
             return state

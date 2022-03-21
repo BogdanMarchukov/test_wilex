@@ -1,11 +1,12 @@
 import {
     ADD_USER_EMAIL,
-    rootAction,
-    SAVE_INPUT_TEXT,
-    SAVE_TYPE_STATUS,
     ADD_USER_IP,
     ADD_USER_NICK,
-    ADD_USER_PHONE
+    ADD_USER_PHONE,
+    LOADER_ON_OFF,
+    rootAction,
+    SAVE_INPUT_TEXT,
+    SAVE_TYPE_STATUS
 } from './type'
 import validator from 'validator';
 
@@ -17,6 +18,7 @@ export interface saveTextAction {
 
 export function saveTextToStore(dispatch: (object: rootAction)=> void, value: string) {
     validatorType(dispatch, value)
+    loading(dispatch, true)
     dispatch({type: SAVE_INPUT_TEXT, payload: value})
 }
 
@@ -42,6 +44,9 @@ export function validatorType(dispatch: (obj: rootAction)=> void, checkText: str
             }
         }
     }
+    setTimeout(()=> {
+        loading(dispatch, false)
+    }, 500)
 
 }
 
@@ -73,4 +78,13 @@ export function addUserData(dispatch: (obj: rootAction)=> void, userData: string
     if (dataType === 'nick') {
         dispatch({type: ADD_USER_NICK, payload: userData})
     }
+}
+
+export interface loadingAction {
+    type: typeof LOADER_ON_OFF,
+    payload: boolean
+}
+
+export function loading(dispatch: (obj: rootAction)=> void, status: boolean) {
+    dispatch({type: LOADER_ON_OFF, payload: status})
 }

@@ -7,10 +7,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {addUserData, saveTextToStore} from "../../redux/action/actionCreator";
 import {Link} from "react-router-dom";
 import {rootState} from "../../redux/action/type";
+import {Loader} from "../Loader/Loader";
 
-type Props = {
-    
-};
+type Props = {};
 export const Input = (props: Props) => {
 
     const [value, setValue] = useState('')
@@ -27,23 +26,23 @@ export const Input = (props: Props) => {
     const {searchType, inputValue} = useSelector(selector)
 
 
-
-
-
     return (
-        <div className={classes.inputWrapper}>
-            <input className={classes.input} onChange={(event)=> saveTextToStore(dispatch, event.target.value) }/>
-            <Link to={searchType}>
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={()=> addUserData(dispatch, inputValue, searchType)}
-            >
+        <>
+            <div className={classes.inputWrapper}>
+                <input className={classes.input} onChange={(event) => saveTextToStore(dispatch, event.target.value)}/>
+                <Link to={searchType}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => addUserData(dispatch, inputValue, searchType)}
+                    >
 
-                    search
+                        search
 
-            </Button>
-            </Link>
-        </div>
+                    </Button>
+                </Link>
+            </div>
+            <Loader/>
+        </>
     );
 };
