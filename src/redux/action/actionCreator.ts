@@ -38,7 +38,7 @@ export function validatorType(dispatch: (obj: rootAction)=> void, checkText: str
                 saveTypeStatus(dispatch, 'ip')
             }
             else {
-                if (checkText[0] === '@') {
+                if (checkText[0] === '@' && checkText.length > 2) {
                     saveTypeStatus(dispatch, 'nick')
                 } else {
                     if (checkText === '') {

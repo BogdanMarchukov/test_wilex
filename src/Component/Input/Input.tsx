@@ -25,11 +25,17 @@ export const Input = (props: Props) => {
 
     const {searchType, inputValue} = useSelector(selector)
 
+    const inputPlaceholder = () => {
+        if (inputValue === '/') {
+            return ''
+        } else return inputValue
+    }
+
 
     return (
         <>
             <div className={classes.inputWrapper}>
-                <input className={classes.input} onChange={(event) => saveTextToStore(dispatch, event.target.value)}/>
+                <input value={inputPlaceholder()} className={classes.input} onChange={(event) => saveTextToStore(dispatch, event.target.value)}/>
                 <Link to={searchType}>
                     <Button
                         variant="contained"
