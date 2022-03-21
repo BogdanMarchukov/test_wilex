@@ -1,0 +1,8 @@
+.wrapper {
+    text-align: center;
+}
+
+.wrapper h1 {
+    padding-top: calc(50vh - 50px) ;
+    font-size: 100px;
+}

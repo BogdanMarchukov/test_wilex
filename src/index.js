@@ -16,6 +16,7 @@ import {Email} from "./Pages/Email/Email";
 import {Ip} from "./Pages/Ip/Ip";
 import {Nick} from "./Pages/Nick/Nick";
 import {Phone} from "./Pages/Phone/Phone";
+import {Error} from "./Pages/Error/Error";
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk),
      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -34,6 +35,7 @@ ReactDOM.render(
                     <Route path="ip" element={<Ip/>}/>
                     <Route path="nick" element={<Nick/>}/>
                     <Route path="phone" element={<Phone/>}/>
+                    <Route path="error" element={<Error/>}/>
                 </Routes>
             </BrowserRouter>
         </Provider>
