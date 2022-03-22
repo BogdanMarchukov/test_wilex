@@ -78,6 +78,7 @@ export function validatorType(dispatch: (obj: rootAction) => void, checkText: st
 
                         ) {
                             splitUserNameAndUserSurname(dispatch, checkText)
+                            saveTypeStatus(dispatch, 'user')
                         } else {
                             saveTypeStatus(dispatch, 'error')
                         }
