@@ -1,18 +1,15 @@
 // @flow
 import * as React from 'react'
-import {useState} from 'react'
 import classes from './input.module.css'
 import {Button} from '@material-ui/core'
 import {useDispatch, useSelector} from "react-redux";
 import {addUserData, saveTextToStore} from "../../redux/action/actionCreator";
 import {Link} from "react-router-dom";
-import {rootState} from "../../redux/action/type";
 import {Loader} from "../Loader/Loader";
 
 type Props = {};
 export const Input = (props: Props) => {
 
-    const [value, setValue] = useState('')
 
     const dispatch = useDispatch()
 
