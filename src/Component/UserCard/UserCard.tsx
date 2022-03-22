@@ -13,11 +13,13 @@ export const UserCard = (props: Props) => {
             email: state.userReducer.email,
             nick: state.userReducer.nick,
             phone: state.userReducer.phone,
-            ip: state.userReducer.ip
+            ip: state.userReducer.ip,
+            name: state.userReducer.name,
+            surname: state.userReducer.surname
         }
     }
 
-    const {email, ip, nick, phone} = useSelector(selector)
+    const {email, ip, nick, phone, name, surname} = useSelector(selector)
 
 
 
@@ -43,6 +45,14 @@ export const UserCard = (props: Props) => {
                 <div className={classes.block}>
                     <span>User IP :</span>
                     <span>{ip}</span>
+                </div>
+                <div className={classes.block}>
+                    <span>User Name :</span>
+                    <span>{name}</span>
+                </div>
+                <div className={classes.block}>
+                    <span>User Surname :</span>
+                    <span>{surname}</span>
                 </div>
             </Card>
         </div>
